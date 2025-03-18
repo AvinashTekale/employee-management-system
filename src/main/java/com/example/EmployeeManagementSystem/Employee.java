@@ -15,7 +15,8 @@ public class Employee {
     private String lastName;
     private String email;
     private String contactNo;
-    private double salary;
+    private Double salary;
+    private String password; // Store hashed password
 
     @ManyToOne
     @JoinColumn(name = "department_id")
@@ -29,8 +30,19 @@ public class Employee {
     )
     private Set<Project> projects;
 
-    // Getters and Setters
+    public Employee() {}
 
+    public Employee(String firstName, String lastName, String email, String contactNo, Double salary, Department department, String password) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.contactNo = contactNo;
+        this.salary = salary;
+        this.department = department;
+        this.password = password;
+    }
+
+    // Getters and Setters
     public Long getId() {
         return id;
     }
@@ -55,6 +67,14 @@ public class Employee {
         this.lastName = lastName;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public String getContactNo() {
         return contactNo;
     }
@@ -63,12 +83,12 @@ public class Employee {
         this.contactNo = contactNo;
     }
 
-    public String getEmail() {
-        return email;
+    public Double getSalary() {
+        return salary;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setSalary(Double salary) {
+        this.salary = salary;
     }
 
     public Department getDepartment() {
@@ -87,11 +107,11 @@ public class Employee {
         this.projects = projects;
     }
 
-    public double getSalary() {
-        return salary;
+    public String getPassword() {
+        return password;
     }
 
-    public void setSalary(double salary) {
-        this.salary = salary;
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
