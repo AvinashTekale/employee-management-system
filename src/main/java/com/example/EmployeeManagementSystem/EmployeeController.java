@@ -41,19 +41,18 @@ public class EmployeeController {
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    @PostMapping
-    public ResponseEntity<Employee> addEmployee(@RequestBody Employee employee) {
-        logger.info("Adding new employee: {}", employee);
-
-        // Hash the password before saving the employee
-        String hashedPassword = passwordEncoder.encode(employee.getPassword());
-        employee.setPassword(hashedPassword);
-
-        Employee savedEmployee = employeeService.saveEmployee(employee);
-        logger.info("Employee added successfully with ID: {}", savedEmployee.getId());
-
-        return ResponseEntity.ok(savedEmployee);
-    }
+//    @PostMapping
+//    public ResponseEntity<Employee> addEmployee(@RequestBody Employee employee) {
+//        logger.info("Adding new employee: {}", employee);
+//
+//        // Hash the password before saving the employee
+//
+//
+//////        Employee savedEmployee = employeeService.saveEmployee(employee);
+////        logger.info("Employee added successfully with ID: {}", savedEmployee.getId());
+////
+//    return R;
+//   }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteEmployee(@PathVariable Long id) {
